@@ -1,18 +1,20 @@
 'use strict'; 
 
-// import your libraries 
+// import your libraries
 require('dotenv').config()
-
 let mongoose = require('mongoose');
 let server = require('./src/server');
 
-// connect to database
-mongoose.connect(process.envMONGODB_URI, {
+// connect to mongo/database
+mongoose.connect(process.env.MONGODB_URI, {
   useUnifiedTopology: true,
   useNewUrlParser: true
 });
-// your own dependencies
 
 // start your server 
-// create a .env file
 server.start(process.env.PORT)
+
+
+//dependencies
+//connect to mongo
+//start the server

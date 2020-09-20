@@ -1,12 +1,11 @@
 'use strict';
 
+const bcrypt = require('bcrypt');
 const base64 = require('base-64');
 const users = require('../models/users-model');
 
-
+//req.params, req.body, req.query, req.headers --all express methods
 module.exports = async (req, res , next) => {
-
-
   try{
     let authorization = req.headers.authorization;
     let encoded = authorization.split(' ')[1]
@@ -29,11 +28,11 @@ module.exports = async (req, res , next) => {
     // if it's good, send a token, if not, send an Error
     req.user = userRecord;
 
-    next();
+    //next();
     //res.send('signin complete');
 
   } catch (err) {
     next("Invalid Login");
   }
-
+  next();
 }

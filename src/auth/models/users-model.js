@@ -36,4 +36,12 @@ users.statics.validateBasic = async function (username, password) {
 
 }
 
+users.statics.authWithToken = function (token) {
+  let parsedToken = jsonToken.verify(token, process.env.SECRET);
+
+  console.log('Parsed Token:', parsedToken)
+  return this.findOne({ username: parsedToken.username})
+}
+
+
 module.exports = mongoose.model('users', users);
